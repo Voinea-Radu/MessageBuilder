@@ -161,11 +161,6 @@ public class MessageBuilder implements java.io.Serializable {
         return parts;
     }
 
-    @Override
-    public String toString() {
-        return "MessageBuilder{" + "base='" + base + '\'' + ", baseList=" + baseList + ", placeholders=" + placeholders + ", values=" + values + '}';
-    }
-
     @SuppressWarnings("unused")
     public @Nullable String getBaseString() {
         if (isList()) {
