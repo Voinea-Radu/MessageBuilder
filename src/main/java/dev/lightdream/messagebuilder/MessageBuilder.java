@@ -50,6 +50,12 @@ public class MessageBuilder implements java.io.Serializable {
         return this;
     }
 
+    public MessageBuilder addPlaceholders(String placeholder, String value) {
+        this.placeholders.add(placeholder);
+        this.values.add(value);
+        return this;
+    }
+
     public boolean isList() {
         return baseList != null;
     }
