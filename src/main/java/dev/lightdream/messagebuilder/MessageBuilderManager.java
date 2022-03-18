@@ -9,8 +9,8 @@ import dev.lightdream.filemanager.FileManagerMain;
 public class MessageBuilderManager {
 
     @SuppressWarnings({"unused", "StringConcatenationInLoop"})
-    static String getVersion(int tabs) {
-        String output = "MessageBuilder 2.0.2\n";
+    public static String getVersion(int tabs) {
+        String output = "MessageBuilder 2.0.3\n";
 
         String prepend = "";
 
@@ -18,7 +18,7 @@ public class MessageBuilderManager {
             prepend += "    ";
         }
 
-        output = output + prepend + "    -> " + FileManagerMain.getVersion(tabs + 1) + "\n";
+        output = output + prepend + "    -> " + FileManagerMain.getVersion(tabs + 1);
         return output;
     }
 
