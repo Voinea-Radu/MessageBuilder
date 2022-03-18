@@ -10,7 +10,7 @@ public class MessageBuilderManager {
 
     @SuppressWarnings({"unused", "StringConcatenationInLoop"})
     public static String getVersion(int tabs) {
-        String output = "MessageBuilder 2.0.3\n";
+        String output = "MessageBuilder 2.0.4\n";
 
         String prepend = "";
 
