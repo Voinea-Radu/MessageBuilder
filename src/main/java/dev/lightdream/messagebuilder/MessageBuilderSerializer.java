@@ -1,30 +1,28 @@
 package dev.lightdream.messagebuilder;
 
-import dev.lightdream.libs.fasterxml.core.JsonGenerator;
-import dev.lightdream.libs.fasterxml.databind.JsonSerializer;
-import dev.lightdream.libs.fasterxml.databind.SerializerProvider;
+import com.google.gson.*;
 
-import java.io.IOException;
+import java.lang.reflect.Type;
 
-public class MessageBuilderSerializer extends JsonSerializer<MessageBuilder> {
+public class MessageBuilderSerializer implements JsonSerializer<MessageBuilder> {
 
     @SuppressWarnings("ConstantConditions")
     @Override
-    public void serialize(MessageBuilder messageBuilder, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
-        jsonGenerator.writeStartObject();
+    public JsonElement serialize(MessageBuilder messageBuilder, Type type, JsonSerializationContext jsonSerializationContext) {
+
+        JsonObject jsonObject = new JsonObject();
 
         if (messageBuilder.isList()) {
-            jsonGenerator.writeArrayFieldStart("text");
-            for (String line : messageBuilder.getBaseList()) {
-                jsonGenerator.writeString(line);
-            }
-            jsonGenerator.writeEndArray();
+            JsonArray jsonArray = new JsonArray();
+
+            messageBuilder.getBaseList().forEach(jsonArray::add);
+
+            jsonObject.add("text", jsonArray);
+
         } else {
-            jsonGenerator.writeFieldName("text");
-            jsonGenerator.writeString(messageBuilder.getBaseString());
+            jsonObject.addProperty("text", messageBuilder.getBaseString());
         }
 
-        jsonGenerator.writeEndObject();
-
+        return jsonObject;
     }
 }

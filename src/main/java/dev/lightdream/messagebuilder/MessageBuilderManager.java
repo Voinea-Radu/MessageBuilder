@@ -1,15 +1,22 @@
 package dev.lightdream.messagebuilder;
 
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonSerializer;
 import dev.lightdream.filemanager.FileManager;
-import dev.lightdream.libs.fasterxml.databind.module.SimpleModule;
 
 @SuppressWarnings("unused")
 public class MessageBuilderManager {
 
     public static void registerFileManagerModule(FileManager fileManager) {
-        SimpleModule messageBuilderModule = new SimpleModule();
-        messageBuilderModule.addSerializer(MessageBuilder.class, new MessageBuilderSerializer());
-        messageBuilderModule.addDeserializer(MessageBuilder.class, new MessageBuilderDeserializer());
-        fileManager.registerModule(messageBuilderModule);
+        JsonSerializer<MessageBuilder> serializer = new MessageBuilderSerializer();
+        JsonDeserializer<MessageBuilder> deserializer = new MessageBuilderDeserializer();
+
+        fileManager.setGsonBuilder(
+                fileManager.getGsonBuilder()
+                        .registerTypeAdapter(MessageBuilder.class, deserializer)
+                        .registerTypeAdapter(MessageBuilder.class, serializer)
+        );
+
+        MessageBuilder.init();
     }
 }

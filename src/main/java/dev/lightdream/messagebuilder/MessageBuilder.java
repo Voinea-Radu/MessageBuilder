@@ -1,14 +1,17 @@
 package dev.lightdream.messagebuilder;
 
+import com.google.gson.JsonArray;
+import dev.lightdream.logger.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 
 @SuppressWarnings("unused")
-public class MessageBuilder implements java.io.Serializable {
+public class MessageBuilder {
 
-    public boolean chatColor = true;
+    public static boolean chatColor = true;
+    private static boolean managerInitialized = false;
     private String base;
     private List<String> baseList;
     private List<String> placeholders = new ArrayList<>();
@@ -23,10 +26,23 @@ public class MessageBuilder implements java.io.Serializable {
         this.baseList = baseList;
     }
 
+    public MessageBuilder(JsonArray baseList) {
+        this.baseList = new ArrayList<>();
+        baseList.forEach(line -> this.baseList.add(line.getAsString()));
+    }
+
     private MessageBuilder(String base, List<String> placeholders, List<String> values) {
         this.base = base;
         this.placeholders = placeholders;
         this.values = values;
+    }
+
+    public static void setChatColor(boolean chatColor) {
+        MessageBuilder.chatColor = chatColor;
+    }
+
+    public static void init() {
+        managerInitialized = true;
     }
 
     @SuppressWarnings("unused")
@@ -61,6 +77,9 @@ public class MessageBuilder implements java.io.Serializable {
     }
 
     public Object parse() {
+        if (!MessageBuilder.managerInitialized) {
+            Logger.warn("MessageBuilder manager has not been initialized!");
+        }
         if (isList()) {
             List<String> parsedList = new ArrayList<>();
 
