@@ -8,10 +8,18 @@ import dev.lightdream.filemanager.FileManagerMain;
 @SuppressWarnings("unused")
 public class MessageBuilderManager {
 
-    @SuppressWarnings("unused")
-    static String getVersion() {
-        return "MessageBuilder " + MessageBuilder.class.getPackage().getImplementationVersion() +
-                "    -> " + FileManagerMain.getVersion();
+    @SuppressWarnings({"unused", "StringConcatenationInLoop"})
+    static String getVersion(int tabs) {
+        String output = "MessageBuilder 2.0.2\n";
+
+        String prepend = "";
+
+        for (int i = 0; i < tabs; ++i) {
+            prepend += "    ";
+        }
+
+        output = output + prepend + "    -> " + FileManagerMain.getVersion(tabs + 1) + "\n";
+        return output;
     }
 
     public static void registerFileManagerModule(FileManager fileManager) {
