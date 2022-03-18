@@ -16,6 +16,7 @@ public class MessageBuilderManager {
                         .registerTypeAdapter(MessageBuilder.class, deserializer)
                         .registerTypeAdapter(MessageBuilder.class, serializer)
         );
+        fileManager.reload();
 
         MessageBuilder.init();
     }
