@@ -9,12 +9,6 @@ public class MessageBuilderSerializer implements JsonSerializer<MessageBuilder> 
     @SuppressWarnings("ConstantConditions")
     @Override
     public JsonElement serialize(MessageBuilder messageBuilder, Type type, JsonSerializationContext jsonSerializationContext) {
-        if (messageBuilder.isList()) {
-            JsonArray jsonArray = new JsonArray();
-
-            messageBuilder.getBaseList().forEach(jsonArray::add);
-            return jsonArray;
-        }
-        return new JsonPrimitive(messageBuilder.getBaseString());
+        return new JsonPrimitive(messageBuilder.getBase());
     }
 }

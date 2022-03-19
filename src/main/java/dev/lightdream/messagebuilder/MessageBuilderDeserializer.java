@@ -8,9 +8,6 @@ public class MessageBuilderDeserializer implements JsonDeserializer<MessageBuild
 
     @Override
     public MessageBuilder deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext deserializationContext) {
-        if (jsonElement.isJsonArray()) {
-            return new MessageBuilder(jsonElement.getAsJsonArray());
-        }
         return new MessageBuilder(jsonElement.getAsString());
     }
 }
