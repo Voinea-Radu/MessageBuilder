@@ -7,11 +7,10 @@ import java.lang.reflect.Type;
 public class MessageBuilderDeserializer implements JsonDeserializer<MessageBuilder> {
 
     @Override
-    public MessageBuilder deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext deserializationContext) throws JsonParseException {
-        JsonObject jsonObject = jsonElement.getAsJsonObject();
-        if (jsonObject.isJsonArray()) {
-            return new MessageBuilder(jsonObject.getAsJsonArray());
+    public MessageBuilder deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext deserializationContext) {
+        if (jsonElement.isJsonArray()) {
+            return new MessageBuilder(jsonElement.getAsJsonArray());
         }
-        return new MessageBuilder(jsonObject.getAsString());
+        return new MessageBuilder(jsonElement.getAsString());
     }
 }
