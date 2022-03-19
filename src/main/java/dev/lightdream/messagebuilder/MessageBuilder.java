@@ -34,6 +34,7 @@ public class MessageBuilder {
         managerInitialized = true;
     }
 
+    @Deprecated
     public MessageBuilder addPlaceholders(HashMap<String, String> placeholders) {
         MessageBuilder working = this;
         for (String placeholder : placeholders.keySet()) {
@@ -43,7 +44,28 @@ public class MessageBuilder {
         return working;
     }
 
+    public MessageBuilder parse(HashMap<String, String> placeholders) {
+        MessageBuilder working = this;
+        for (String placeholder : placeholders.keySet()) {
+            String value = placeholders.get(placeholder);
+            working = working.parse(placeholder, value);
+        }
+        return working;
+    }
+
+    @Deprecated
     public MessageBuilder addPlaceholders(String placeholder, String value) {
+        MessageBuilder working = this;
+        if (!cloned) {
+            working = clone();
+            Debugger.log("Self-cloning MessageBuilder " + this.toHexString() + " to avoid overwrites to " + working.toHexString());
+        }
+        working.placeholders.add(placeholder);
+        working.values.add(value);
+        return working;
+    }
+
+    public MessageBuilder parse(String placeholder, String value) {
         MessageBuilder working = this;
         if (!cloned) {
             working = clone();
