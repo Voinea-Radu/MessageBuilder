@@ -214,4 +214,9 @@ public class MessageBuilder {
         }
         return Collections.singletonList((String) parse());
     }
+
+    @Override
+    public String toString() {
+        return parseString();
+    }
 }
