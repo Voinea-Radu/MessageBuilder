@@ -58,7 +58,6 @@ public class MessageBuilder {
         MessageBuilder working = this;
         if (!cloned) {
             working = clone();
-            Debugger.log("Self-cloning MessageBuilder " + this.toHexString() + " to avoid overwrites to " + working.toHexString());
         }
         working.placeholders.add(placeholder);
         working.values.add(value);
@@ -69,7 +68,6 @@ public class MessageBuilder {
         MessageBuilder working = this;
         if (!cloned) {
             working = clone();
-            Debugger.log("Self-cloning MessageBuilder " + this.toHexString() + " to avoid overwrites to " + working.toHexString());
         }
         working.placeholders.add(placeholder);
         working.values.add(value);
@@ -144,8 +142,6 @@ public class MessageBuilder {
     public String toHexString() {
         return getClass().getName() + "@" + Integer.toHexString(hashCode());
     }
-
-
 
 
 }
