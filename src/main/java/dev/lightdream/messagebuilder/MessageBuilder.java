@@ -39,7 +39,7 @@ public class MessageBuilder {
     }
 
     public MessageBuilder(Object... base) {
-        this(" ", base);
+        this("", base);
     }
 
     private MessageBuilder(String base, List<Object> placeholders, List<Object> values) {
