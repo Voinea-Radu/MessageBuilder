@@ -12,8 +12,8 @@ public class MessageBuilder {
     private static boolean managerInitialized = false;
     private boolean cloned = false;
     private String base;
-    private List<String> placeholders = new ArrayList<>();
-    private List<String> values = new ArrayList<>();
+    private List<Object> placeholders = new ArrayList<>();
+    private List<Object> values = new ArrayList<>();
 
     public MessageBuilder(Object base) {
         this.base = base.toString();
@@ -32,7 +32,7 @@ public class MessageBuilder {
         this(" ", base);
     }
 
-    private MessageBuilder(String base, List<String> placeholders, List<String> values) {
+    private MessageBuilder(String base, List<Object> placeholders, List<Object> values) {
         this.base = base;
         this.placeholders = placeholders;
         this.values = values;
@@ -47,26 +47,26 @@ public class MessageBuilder {
     }
 
     @Deprecated
-    public MessageBuilder addPlaceholders(HashMap<String, String> placeholders) {
+    public MessageBuilder addPlaceholders(HashMap<Object, Object> placeholders) {
         MessageBuilder working = this;
-        for (String placeholder : placeholders.keySet()) {
-            String value = placeholders.get(placeholder);
+        for (Object placeholder : placeholders.keySet()) {
+            String value = placeholders.get(placeholder).toString();
             working = working.addPlaceholders(placeholder, value);
         }
         return working;
     }
 
-    public MessageBuilder parse(HashMap<String, String> placeholders) {
+    public MessageBuilder parse(HashMap<Object, Object> placeholders) {
         MessageBuilder working = this;
-        for (String placeholder : placeholders.keySet()) {
-            String value = placeholders.get(placeholder);
+        for (Object placeholder : placeholders.keySet()) {
+            String value = placeholders.get(placeholder).toString();
             working = working.parse(placeholder, value);
         }
         return working;
     }
 
     @Deprecated
-    public MessageBuilder addPlaceholders(String placeholder, String value) {
+    public MessageBuilder addPlaceholders(Object placeholder, Object value) {
         MessageBuilder working = this;
         if (!cloned) {
             working = clone();
@@ -76,7 +76,7 @@ public class MessageBuilder {
         return working;
     }
 
-    public MessageBuilder parse(String placeholder, String value) {
+    public MessageBuilder parse(Object placeholder, Object value) {
         MessageBuilder working = this;
         if (!cloned) {
             working = clone();
@@ -93,7 +93,7 @@ public class MessageBuilder {
         String parsed = base;
 
         for (int i = 0; i < Math.min(placeholders.size(), values.size()); i++) {
-            parsed = parsed.replace("%" + placeholders.get(i) + "%", values.get(i));
+            parsed = parsed.replace("%" + placeholders.get(i).toString() + "%", values.get(i).toString());
         }
 
         if (chatColor) {
