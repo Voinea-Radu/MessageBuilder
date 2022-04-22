@@ -1,6 +1,5 @@
 package dev.lightdream.messagebuilder;
 
-import dev.lightdream.logger.Debugger;
 import dev.lightdream.logger.Logger;
 import org.jetbrains.annotations.Nullable;
 
