@@ -22,9 +22,11 @@ public class MessageBuilder {
     @SuppressWarnings("StringConcatenationInLoop")
     public MessageBuilder(String separator, Object... base) {
         this.base = "";
-        for (Object s : base) {
-            this.base += s.toString();
-            this.base += separator;
+        for (int i = 0; i < base.length; i++) {
+            this.base += base[i].toString();
+            if (i != base.length - 1) {
+                this.base += separator;
+            }
         }
     }
 
