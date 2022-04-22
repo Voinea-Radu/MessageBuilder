@@ -15,38 +15,20 @@ public class MessageBuilder {
     private List<String> placeholders = new ArrayList<>();
     private List<String> values = new ArrayList<>();
 
-    public MessageBuilder(String base) {
-        this.base = base;
-    }
-
-    @SuppressWarnings("CopyConstructorMissesField")
-    public MessageBuilder(MessageBuilder base) {
-        this.base = base.getBase();
+    public MessageBuilder(Object base) {
+        this.base = base.toString();
     }
 
     @SuppressWarnings("StringConcatenationInLoop")
-    public MessageBuilder(String separator, String... base) {
+    public MessageBuilder(String separator, Object... base) {
         this.base = "";
-        for (String s : base) {
-            this.base += s;
+        for (Object s : base) {
+            this.base += s.toString();
             this.base += separator;
         }
     }
 
-    public MessageBuilder(String... base) {
-        this(" ", base);
-    }
-
-    @SuppressWarnings("StringConcatenationInLoop")
-    public MessageBuilder(String separator, MessageBuilder... base) {
-        this.base = "";
-        for (MessageBuilder s : base) {
-            this.base += s.getBase();
-            this.base += separator;
-        }
-    }
-
-    public MessageBuilder(MessageBuilder... base) {
+    public MessageBuilder(Object... base) {
         this(" ", base);
     }
 
