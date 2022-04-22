@@ -8,7 +8,7 @@ import java.util.*;
 @SuppressWarnings("unused")
 public class MessageBuilder {
 
-    private static boolean chatColor = true;
+    private static boolean chatColor = false;
     private static boolean managerInitialized = false;
     private boolean cloned = false;
     private String base;
@@ -17,6 +17,14 @@ public class MessageBuilder {
 
     public MessageBuilder(Object base) {
         this.base = base.toString();
+    }
+
+    public static void enableChatColor() {
+        chatColor = true;
+    }
+
+    public static void disableChatColor() {
+        chatColor = false;
     }
 
     @SuppressWarnings("StringConcatenationInLoop")

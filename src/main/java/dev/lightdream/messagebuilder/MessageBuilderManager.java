@@ -19,4 +19,12 @@ public class MessageBuilderManager {
 
         MessageBuilder.init();
     }
+
+    public static void disableChatColor() {
+        MessageBuilder.disableChatColor();
+    }
+
+    public static void enableChatColor() {
+        MessageBuilder.disableChatColor();
+    }
 }
