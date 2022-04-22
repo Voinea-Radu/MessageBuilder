@@ -20,6 +20,37 @@ public class MessageBuilder {
         this.base = base;
     }
 
+    @SuppressWarnings("CopyConstructorMissesField")
+    public MessageBuilder(MessageBuilder base) {
+        this.base = base.getBase();
+    }
+
+    @SuppressWarnings("StringConcatenationInLoop")
+    public MessageBuilder(String separator, String... base) {
+        this.base = "";
+        for (String s : base) {
+            this.base += s;
+            this.base += separator;
+        }
+    }
+
+    public MessageBuilder(String... base) {
+        this(" ", base);
+    }
+
+    @SuppressWarnings("StringConcatenationInLoop")
+    public MessageBuilder(String separator, MessageBuilder... base) {
+        this.base = "";
+        for (MessageBuilder s : base) {
+            this.base += s.getBase();
+            this.base += separator;
+        }
+    }
+
+    public MessageBuilder(MessageBuilder... base) {
+        this(" ", base);
+    }
+
     private MessageBuilder(String base, List<String> placeholders, List<String> values) {
         this.base = base;
         this.placeholders = placeholders;
