@@ -31,7 +31,7 @@ public class MessageBuilder {
     }
 
     @SuppressWarnings("StringConcatenationInLoop")
-    public MessageBuilder(String separator, List<Object> base) {
+    public MessageBuilder(String separator, List<?> base) {
         this.base = "";
         for (int i = 0; i < base.size(); i++) {
             this.base += base.get(i).toString();
@@ -45,7 +45,7 @@ public class MessageBuilder {
         this("", base);
     }
 
-    public MessageBuilder(List<Object> base) {
+    public MessageBuilder(List<?> base) {
         this("", base);
     }
 
