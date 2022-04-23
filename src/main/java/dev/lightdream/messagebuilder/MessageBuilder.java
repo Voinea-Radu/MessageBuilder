@@ -19,14 +19,6 @@ public class MessageBuilder {
         this.base = base.toString();
     }
 
-    public static void enableChatColor() {
-        chatColor = true;
-    }
-
-    public static void disableChatColor() {
-        chatColor = false;
-    }
-
     @SuppressWarnings("StringConcatenationInLoop")
     public MessageBuilder(String separator, Object... base) {
         this.base = "";
@@ -38,7 +30,22 @@ public class MessageBuilder {
         }
     }
 
+    @SuppressWarnings("StringConcatenationInLoop")
+    public MessageBuilder(String separator, List<Object> base) {
+        this.base = "";
+        for (int i = 0; i < base.size(); i++) {
+            this.base += base.get(i).toString();
+            if (i != base.size() - 1) {
+                this.base += separator;
+            }
+        }
+    }
+
     public MessageBuilder(Object... base) {
+        this("", base);
+    }
+
+    public MessageBuilder(List<Object> base) {
         this("", base);
     }
 
@@ -46,6 +53,14 @@ public class MessageBuilder {
         this.base = base;
         this.placeholders = placeholders;
         this.values = values;
+    }
+
+    public static void enableChatColor() {
+        chatColor = true;
+    }
+
+    public static void disableChatColor() {
+        chatColor = false;
     }
 
     public static void setChatColor(boolean chatColor) {
