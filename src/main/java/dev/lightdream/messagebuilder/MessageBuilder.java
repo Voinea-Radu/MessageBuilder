@@ -1,5 +1,6 @@
 package dev.lightdream.messagebuilder;
 
+import dev.lightdream.filemanager.FileManager;
 import dev.lightdream.logger.Logger;
 import org.jetbrains.annotations.Nullable;
 
@@ -69,6 +70,10 @@ public class MessageBuilder {
 
     protected static void init() {
         managerInitialized = true;
+    }
+
+    public static void init(FileManager fileManager) {
+        MessageBuilderManager.init(fileManager);
     }
 
     @Deprecated
