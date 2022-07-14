@@ -123,7 +123,20 @@ public class MessageBuilder {
         String parsed = base;
 
         for (int i = 0; i < Math.min(placeholders.size(), values.size()); i++) {
-            parsed = parsed.replace("%" + placeholders.get(i).toString() + "%", values.get(i).toString());
+            String placeholder = null;
+            Object placeholderObj = placeholders.get(i);
+
+            String value = "null";
+            Object valueObj = values.get(i);
+
+            if (placeholderObj != null) {
+                placeholder = placeholderObj.toString();
+            }
+            if (valueObj != null) {
+                value = valueObj.toString();
+            }
+
+            parsed = parsed.replace("%" + placeholder + "%", value);
         }
 
         if (chatColor) {
