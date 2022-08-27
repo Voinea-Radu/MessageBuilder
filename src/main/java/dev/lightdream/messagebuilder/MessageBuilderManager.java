@@ -11,8 +11,28 @@ import dev.lightdream.messagebuilder.data_management.serializer.MessageBuilderSe
 @SuppressWarnings("unused")
 public class MessageBuilderManager {
 
+    public static String colorChar = "&";
+    public static String colorCharReplace = "§";
     private static boolean initialized = false;
     private static boolean chatColor = false;
+
+    public static void setColorChar(String colorChar) {
+        MessageBuilderManager.colorChar = colorChar;
+    }
+
+    public static void setColorCharReplace(String colorCharReplace) {
+        MessageBuilderManager.colorCharReplace = colorCharReplace;
+    }
+
+    public static void setupSpigot() {
+        setColorChar("&");
+        setColorCharReplace("§");
+    }
+
+    public static void setupForge() {
+        setColorChar("&");
+        setColorCharReplace("\u00a7");
+    }
 
     public static boolean isInitialized() {
         return initialized;
