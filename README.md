@@ -21,3 +21,9 @@
 </dependencies>
 ```
 
+# Versioning
+```
+1.x.x - Only string processing
+2.x.x - String processing and JSON storage
+3.x.x - Stirng and list processing with JSON storage
+```

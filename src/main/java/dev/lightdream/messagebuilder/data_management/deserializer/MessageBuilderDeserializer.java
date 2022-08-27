@@ -1,6 +1,9 @@
-package dev.lightdream.messagebuilder;
+package dev.lightdream.messagebuilder.data_management.deserializer;
 
-import com.google.gson.*;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import dev.lightdream.messagebuilder.MessageBuilder;
 
 import java.lang.reflect.Type;
 

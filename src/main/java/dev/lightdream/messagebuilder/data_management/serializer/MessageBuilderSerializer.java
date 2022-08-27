@@ -1,6 +1,10 @@
-package dev.lightdream.messagebuilder;
+package dev.lightdream.messagebuilder.data_management.serializer;
 
-import com.google.gson.*;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
+import dev.lightdream.messagebuilder.MessageBuilder;
 
 import java.lang.reflect.Type;
 
