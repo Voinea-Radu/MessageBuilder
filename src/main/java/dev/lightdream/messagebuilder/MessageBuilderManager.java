@@ -1,7 +1,5 @@
 package dev.lightdream.messagebuilder;
 
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonSerializer;
 import dev.lightdream.filemanager.FileManager;
 import dev.lightdream.messagebuilder.data_management.deserializer.MessageBuilderDeserializer;
 import dev.lightdream.messagebuilder.data_management.deserializer.MessageBuilderListDeserializer;
@@ -39,19 +37,10 @@ public class MessageBuilderManager {
     }
 
     public static void init(FileManager fileManager) {
-        JsonSerializer<MessageBuilder> messageBuilderSerializer = new MessageBuilderSerializer();
-        JsonSerializer<MessageBuilderList> messageBuilderListJsonSerializer = new MessageBuilderListSerializer();
-
-        JsonDeserializer<MessageBuilder> messageBuilderDeserializer = new MessageBuilderDeserializer();
-        JsonDeserializer<MessageBuilderList> messageBuilderListDeserializer = new MessageBuilderListDeserializer();
-
-        fileManager.setGsonBuilder(
-                fileManager.getGsonBuilder()
-                        .registerTypeAdapter(MessageBuilder.class, messageBuilderSerializer)
-                        .registerTypeAdapter(MessageBuilder.class, messageBuilderListJsonSerializer)
-                        .registerTypeAdapter(MessageBuilder.class, messageBuilderDeserializer)
-                        .registerTypeAdapter(MessageBuilder.class, messageBuilderListDeserializer)
-        );
+        new MessageBuilderSerializer().register(fileManager);
+        new MessageBuilderListSerializer().register(fileManager);
+        new MessageBuilderDeserializer().register(fileManager);
+        new MessageBuilderListDeserializer().register(fileManager);
 
         init();
     }
