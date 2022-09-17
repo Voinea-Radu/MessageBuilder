@@ -1,5 +1,7 @@
 # LightDream Message Builder
+
 ![Build](https://github.com/L1ghtDream/MessageBuilder/actions/workflows/build.yml/badge.svg)
+
 ```xml
 <repositories>
     <repository>
@@ -22,6 +24,7 @@
 ```
 
 # Versioning
+
 ```
 1.x.x - Only string processing
 2.x.x - String processing and JSON storage
