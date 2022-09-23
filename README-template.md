@@ -1,6 +1,6 @@
 # LightDream Message Builder
 
-![Build](https://github.com/L1ghtDream/MessageBuilder/actions/workflows/build.yml/badge.svg)
+![Build](../../actions/workflows/build.yml/badge.svg)
 ![Version](https://img.shields.io/badge/Version-${{ env.VERSION }}-red.svg)
 
 A string manipulation library that allows you to create messages with placeholders.
