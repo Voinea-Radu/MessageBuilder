@@ -11,7 +11,6 @@ Serializes to a string / list using GSON and [FileManager](https://github.com/L1
 ### Maven
 
 ```xml
-
 <repositories>
     <repository>
         <id>lightdream-repo</id>
@@ -22,23 +21,19 @@ Serializes to a string / list using GSON and [FileManager](https://github.com/L1
 ```
 
 ```xml
-
 <dependencies>
-    <dependencies>
-        <dependency>
-            <groupId>dev.lightdream</groupId>
-            <artifactId>MessageBuilder</artifactId>
-            <version>3.0.3</version>
-        </dependency>
-        <!-- Other dependencies -->
-    </dependencies>
+    <dependency>
+        <groupId>dev.lightdream</groupId>
+        <artifactId>MessageBuilder</artifactId>
+        <version>3.0.3</version>
+    </dependency>
     <!-- Other dependencies -->
 </dependencies>
 ```
 
 ### Gradle
 
-```gradle
+```groovy
 repositories {
     maven { url "https://repo.lightdream.dev/repository/LightDream-API/" }
     
@@ -53,30 +48,7 @@ dependencies {
 ```
 
 ## Example
+Can be found in the [source code](/src/main/java/dev/lightdream/messagebuilder/example)
 
-```java
-import dev.lightdream.filemanager.FileManager;
-import dev.lightdream.messagebuilder.MessageBuilder;
-import dev.lightdream.messagebuilder.MessageBuilderList;
-import dev.lightdream.messagebuilder.MessageBuilderManager;
-
-public class Example {
-
-    public void parse(FileManager fileManager) {
-        MessageBuilderManager.init(fileManager); // FileManager argument is optional
-        MessageBuilderManager.setupForge(); // or setupSpigot()
-
-        MessageBuilder builderString = new MessageBuilder("Hello %name%!");
-        MessageBuilderList builderList = new MessageBuilderList("Hello %names%!");
-
-        String name = "LightDream";
-        String[] names = {"LightDream", "Foo", "Bar"};
-
-        builderString.parse("%name%", name);
-        builderList.parse("%names%", names);
-    }
-
-}
-```
 
 
