@@ -1,6 +1,6 @@
 # LightDream Message Builder
 
-![Build](https://github.com/L1ghtDream/MessageBuilder/actions/workflows/build.yml/badge.svg)
+![Build](../../actions/workflows/build.yml/badge.svg)
 ![Version](https://img.shields.io/badge/Version-3.0.3-red.svg)
 
 A string manipulation library that allows you to create messages with placeholders.
@@ -15,7 +15,7 @@ Serializes to a string / lists uing GSON and [FileManager](https://github.com/L1
 <repositories>
     <repository>
         <id>lightdream-repo</id>
-        <url>https://repo.lightdream.dev/repository/LightDream-API/</url>
+        <url>https://repo.lightdream.dev/</url>
     </repository>
     <!-- Other repositories -->
 </repositories>
@@ -37,7 +37,7 @@ Serializes to a string / lists uing GSON and [FileManager](https://github.com/L1
 
 ```groovy
 repositories {
-    maven { url "https://repo.lightdream.dev/repository/LightDream-API/" }
+    maven { url "https://repo.lightdream.dev/" }
 
     // Other repositories
 }
