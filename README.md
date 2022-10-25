@@ -1,7 +1,7 @@
 # LightDream Message Builder
 
 ![Build](../../actions/workflows/build.yml/badge.svg)
-![Version](https://img.shields.io/badge/Version-3.0.3-red.svg)
+![Version](https://img.shields.io/badge/Version-3.0.4-red.svg)
 
 A string manipulation library that allows you to create messages with placeholders.
 Serializes to a string / lists uing GSON and [FileManager](https://github.com/L1ghtDream/FileManager).
@@ -27,7 +27,7 @@ Serializes to a string / lists uing GSON and [FileManager](https://github.com/L1
     <dependency>
         <groupId>dev.lightdream</groupId>
         <artifactId>MessageBuilder</artifactId>
-        <version>3.0.3</version>
+        <version>3.0.4</version>
     </dependency>
     <!-- Other dependencies -->
 </dependencies>
@@ -43,7 +43,7 @@ repositories {
 }
 
 dependencies {
-    implementation "dev.lightdream:MessageBuilder:3.0.3"
+    implementation "dev.lightdream:MessageBuilder:3.0.4"
 
     // Other dependencies
 }
