@@ -29,6 +29,7 @@ public class MessageBuilderManager {
 
     public static void setupForge() {
         setColorChar("&");
+        //noinspection UnnecessaryUnicodeEscape
         setColorCharReplace("\u00a7");
     }
 
