@@ -1,42 +1,32 @@
 # MessageBuilder
 
-![Build](https://github.com/L1ghtDream/MessageBuilder/actions/workflows/build.yml/badge.svg)
-![Version](https://img.shields.io/badge/Version-3.1.2-red.svg)
+![Build](../../actions/workflows/build.yml/badge.svg)
+![Version](https://img.shields.io/badge/Version-3.1.3-red.svg)
 
-## Use
+# Table Of Contents
 
-If you want to use an older version that is not avanible in https://repo.lightdream.dev you can try
-using https://archive-repo.lightdream.dev
+1. [Description](#description)
+2. [How to add to your project](#how-to-add-to-your-project)
+3. [How to use](#how-to-use)
 
-<details>
-  <summary>Maven</summary><blockquote>
-  <details><summary>repo.lightdream.dev</summary>
+## Description
+
+A placeholder parser that hooks into FileManager for the best storage integration.
+
+## How to add to your project
+
+The artifact can be found at the repository https://repo.lightdream.dev or https://jitpack.io (under
+com.github.L1ghtDream instead of dev.lightdream)
+
+### Maven
 
 ```xml
+
 <repositories>
     <repository>
         <id>lightdream-repo</id>
         <url>https://repo.lightdream.dev/</url>
     </repository>
-</repositories>
-```
-
-```xml
-<dependenies>
-    <dependency>
-        <groupId>dev.lightdream</groupId>
-        <artifactId>message-builder</artifactId>
-        <version>3.1.2</version>
-    </dependency>
-</dependenies>
-```
-
-  </details>
-
-  <details><summary  style="padding-left:25px">jitpack.io</summary>
-
-```xml
-<repositories>
     <repository>
         <id>jitpack.io</id>
         <url>https://jitpack.io</url>
@@ -45,96 +35,86 @@ using https://archive-repo.lightdream.dev
 ```
 
 ```xml
+
 <dependencies>
+    <dependency>
+        <groupId>dev.lightdream</groupId>
+        <artifactId>message-builder</artifactId>
+        <version>3.1.3</version>
+    </dependency>
     <dependency>
         <groupId>com.github.L1ghtDream</groupId>
         <artifactId>message-builder</artifactId>
-        <version>3.1.2</version>
+        <version>3.1.3</version>
     </dependency>
 </dependencies>
 ```
 
-</blockquote></details>
-
-</details>
-
-<details><summary>Gradle</summary><blockquote>
-
-  <details><summary>Groovy</summary><blockquote>
-
-  <details><summary>repo.lightdream.dev</summary>
-
-```groovy
-repositories {
-    maven("https://repo.lightdream.dev/")
-}
-```
-
-```groovy
-dependencies {
-    implementation "dev.lightdream:message-builder:3.1.2"
-}
-```
-
-  </details>
-
-  <details><summary>jitpack.io</summary>
-
-```groovy
-repositories {
-    maven { url "https://jitpack.io" }
-}
-```
-
-```groovy
-dependencies {
-    implementation "com.github.L1ghtDream:message-builder:3.1.2"
-}
-```
-
-  </details>
-</blockquote></details>
-
-  <details>
-    <summary>Kotlin</summary><blockquote>
-
-  <details>
-<summary>repo.lightdream.dev</summary>
+### Gradle - Groovy DSL
 
 ```groovy
 repositories {
     maven { url "https://repo.lightdream.dev/" }
+    maven { url "https://jitpack.io" }
 }
-```
 
-```groovy
 dependencies {
-    implementation("dev.lightdream:message-builder:3.1.2")
+    implementation "dev.lightdream:message-builder:3.1.3"
+    implementation "com.github.L1ghtDream:message-builder:3.1.3"
 }
 ```
 
-  </details>
-  <details>
-  <summary style="padding-left:50px">jitpack.io</summary>
+### Gradle - Kotlin DSL
 
 ```kotlin
 repositories {
+    maven("https://repo.lightdream.dev/")
     maven("https://jitpack.io")
 }
-```
 
-```kotlin
 dependencies {
-    implementation("com.github.L1ghtDream:message-builder:3.1.2")
+    implementation("dev.lightdream:message-builder:3.1.3")
+    implementation("com.github.L1ghtDream:message-builder:3.1.3")
 }
 ```
 
-</details>
+If you want to use an older version that is not available in https://repo.lightdream.dev you can try
+using https://archive-repo.lightdream.dev
 
-  </blockquote></details>
+## How to use
 
-</blockquote></details>
+### Main class
+
+```java
+public class ExampleMain {
+
+    public ExampleMain(FileManager fileManager) {
+        // You can call any of the option bellow, depending on whether you want to add compatibility with FileManager or not
+        MessageBuilder.init(fileManager);
+        // If FileManager#setStatic has been called. This call will automatically register itself with the static instance
+        MessageBuilder.init();
+    }
 
 
+}
+```
 
+### Usage
 
+```java
+public class ExampleUse {
+    public void use() {
+        MessageBuilder builder = new MessageBuilder("This a text full of %placeholder%");
+        String output = builder.parse("placeholder", "replacements")
+                .parse();
+
+        MessageBuilderList listBuilder = new MessageBuilderList(Arrays.asList(
+                "This a text full of %placeholder%",
+                "This is another line of the text full of%placeholder%"
+        ));
+
+        List<String> listOutput = listBuilder.parse("placeholder", "replacements")
+                .parse();
+    }
+}
+```
