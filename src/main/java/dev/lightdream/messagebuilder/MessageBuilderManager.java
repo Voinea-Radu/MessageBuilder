@@ -1,10 +1,10 @@
 package dev.lightdream.messagebuilder;
 
 import dev.lightdream.filemanager.FileManager;
-import dev.lightdream.messagebuilder.data_management.deserializer.MessageBuilderDeserializer;
-import dev.lightdream.messagebuilder.data_management.deserializer.MessageBuilderListDeserializer;
-import dev.lightdream.messagebuilder.data_management.serializer.MessageBuilderListSerializer;
-import dev.lightdream.messagebuilder.data_management.serializer.MessageBuilderSerializer;
+import dev.lightdream.messagebuilder.data.deserializer.MessageBuilderDeserializer;
+import dev.lightdream.messagebuilder.data.deserializer.MessageBuilderListDeserializer;
+import dev.lightdream.messagebuilder.data.serializer.MessageBuilderListSerializer;
+import dev.lightdream.messagebuilder.data.serializer.MessageBuilderSerializer;
 
 @SuppressWarnings("unused")
 public class MessageBuilderManager {
@@ -43,10 +43,14 @@ public class MessageBuilderManager {
         new MessageBuilderDeserializer().register(fileManager);
         new MessageBuilderListDeserializer().register(fileManager);
 
-        init();
+        initialized = true;
     }
 
     public static void init() {
+        if (FileManager.get() != null) {
+            init(FileManager.get());
+            return;
+        }
         initialized = true;
     }
 

@@ -1,7 +1,6 @@
 package dev.lightdream.messagebuilder;
 
 import dev.lightdream.logger.Logger;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,8 +16,8 @@ public abstract class GenericMessageBuilder<T> {
     protected List<Object> values = new ArrayList<>();
 
 
-    public GenericMessageBuilder(Object base) {
-        this.base = convert(base);
+    public GenericMessageBuilder(T base) {
+        this.base = base;
     }
 
     protected GenericMessageBuilder(T base, List<Object> placeholders, List<Object> values) {
@@ -41,6 +40,7 @@ public abstract class GenericMessageBuilder<T> {
         if (!cloned) {
             working = clone();
         }
+
         working.placeholders.add(placeholder);
         working.values.add(value);
         return working;
@@ -64,6 +64,14 @@ public abstract class GenericMessageBuilder<T> {
             }
             if (valueObj != null) {
                 value = valueObj.toString();
+            }
+
+            if (placeholder == null) {
+                continue;
+            }
+
+            if (placeholder.startsWith("%") && placeholder.endsWith("%")) {
+                placeholder = placeholder.substring(1, placeholder.length() - 1);
             }
 
             parsed = parsePlaceholder(parsed, "%" + placeholder + "%", value);
@@ -91,8 +99,7 @@ public abstract class GenericMessageBuilder<T> {
         return Objects.hash(cloned, getBase(), placeholders, values);
     }
 
-    @SuppressWarnings("unused")
-    public @Nullable T getBase() {
+    public T getBase() {
         return this.base;
     }
 
@@ -134,13 +141,5 @@ public abstract class GenericMessageBuilder<T> {
      * Clones the current object
      */
     public abstract GenericMessageBuilder<T> clone();
-
-    /**
-     * Convert object to target type
-     * Used by the constructor to convert any object into what the T is
-     *
-     * @param value the object to convert
-     */
-    public abstract T convert(Object value);
 
 }

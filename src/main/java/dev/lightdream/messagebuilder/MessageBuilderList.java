@@ -1,7 +1,6 @@
 package dev.lightdream.messagebuilder;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @SuppressWarnings("unused")
@@ -13,7 +12,7 @@ public class MessageBuilderList extends GenericMessageBuilder<List<String>> {
      *
      * @param base The base message to use.
      */
-    public MessageBuilderList(Object base) {
+    public MessageBuilderList(List<String> base) {
         super(base);
     }
 
@@ -65,37 +64,5 @@ public class MessageBuilderList extends GenericMessageBuilder<List<String>> {
         return new MessageBuilderList(base, new ArrayList<>(placeholders), new ArrayList<>(values));
     }
 
-    /**
-     * Converts the given value to a list of strings.
-     *
-     * @param value The value to convert.
-     * @return The converted value.
-     */
-    @SuppressWarnings("unchecked")
-    @Override
-    public List<String> convert(Object value) {
-        if (value == null) {
-            return null;
-        }
 
-        if (value instanceof List) {
-            return (List<String>) value;
-        }
-
-        return new ArrayList<>(Arrays.asList(value.toString().split("%%new-line%%")));
-    }
-
-    public String getAsStorageString() {
-        StringBuilder output = new StringBuilder();
-
-        if (getBase() == null) {
-            return null;
-        }
-
-        for (String line : getBase()) {
-            output.append(line).append("%%new-line%%");
-        }
-
-        return output.toString();
-    }
 }

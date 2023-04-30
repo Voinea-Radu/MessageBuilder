@@ -1,4 +1,4 @@
-package dev.lightdream.messagebuilder.data_management.serializer;
+package dev.lightdream.messagebuilder.data.serializer;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonPrimitive;

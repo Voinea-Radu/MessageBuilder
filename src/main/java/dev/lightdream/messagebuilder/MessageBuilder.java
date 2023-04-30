@@ -1,17 +1,27 @@
 package dev.lightdream.messagebuilder;
 
+import dev.lightdream.filemanager.FileManager;
+
 import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("unused")
 public class MessageBuilder extends GenericMessageBuilder<String> {
 
-    public MessageBuilder(Object base) {
+    public MessageBuilder(String base) {
         super(base);
     }
 
     protected MessageBuilder(String base, List<Object> placeholders, List<Object> values) {
         super(base, placeholders, values);
+    }
+
+    public static void init(FileManager fileManager) {
+        MessageBuilderManager.init(fileManager);
+    }
+
+    public static void init() {
+        MessageBuilderManager.init();
     }
 
     @Override
@@ -38,13 +48,5 @@ public class MessageBuilder extends GenericMessageBuilder<String> {
     @Override
     public GenericMessageBuilder<String> clone() {
         return new MessageBuilder(base, new ArrayList<>(placeholders), new ArrayList<>(values));
-    }
-
-    @Override
-    public String convert(Object value) {
-        if (value == null) {
-            return null;
-        }
-        return value.toString();
     }
 }

@@ -1,7 +1,7 @@
-package dev.lightdream.messagebuilder.data_management.serializer;
+package dev.lightdream.messagebuilder.data.serializer;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
 import dev.lightdream.messagebuilder.MessageBuilderList;
 
@@ -11,7 +11,13 @@ public class MessageBuilderListSerializer implements Serializer<MessageBuilderLi
 
     @Override
     public JsonElement serialize(MessageBuilderList messageBuilder, Type type, JsonSerializationContext jsonSerializationContext) {
-        return new JsonPrimitive(messageBuilder.getAsStorageString());
+        JsonArray array = new JsonArray();
+
+        for (String line : messageBuilder.getBase()) {
+            array.add(line);
+        }
+
+        return array;
     }
 
     @Override
