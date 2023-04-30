@@ -1,4 +1,4 @@
-package dev.lightdream.messagebuilder.data_management.deserializer;
+package dev.lightdream.messagebuilder.data.deserializer;
 
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonElement;

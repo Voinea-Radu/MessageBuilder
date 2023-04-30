@@ -23,7 +23,7 @@ java {
 dependencies {
     // LightDream
     implementation("dev.lightdream:logger:3.1.0")
-    implementation("dev.lightdream:file-manager:2.4.2")
+    implementation("dev.lightdream:file-manager:2.6.4")
 
     // Google
     implementation("com.google.code.gson:gson:2.10")

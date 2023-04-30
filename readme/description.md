@@ -1,0 +1,1 @@
+A placeholder parser that hooks into FileManager for the best storage integration.

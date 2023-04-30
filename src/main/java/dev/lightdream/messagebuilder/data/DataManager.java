@@ -1,4 +1,4 @@
-package dev.lightdream.messagebuilder.data_management;
+package dev.lightdream.messagebuilder.data;
 
 import dev.lightdream.filemanager.FileManager;
 
