@@ -5,7 +5,8 @@
 
 ## Use
 
-If you want to use an older version that is not avanible in https://repo.lightdream.dev you can try using https://archive-repo.lightdream.dev
+If you want to use an older version that is not avanible in https://repo.lightdream.dev you can try
+using https://archive-repo.lightdream.dev
 
 <details>
   <summary>Maven</summary><blockquote>
@@ -74,6 +75,7 @@ dependencies {
     implementation "dev.lightdream:message-builder:3.1.2"
 }
 ```
+
   </details>
 
   <details><summary>jitpack.io</summary>
@@ -89,6 +91,7 @@ dependencies {
     implementation "com.github.L1ghtDream:message-builder:3.1.2"
 }
 ```
+
   </details>
 </blockquote></details>
 
@@ -109,6 +112,7 @@ dependencies {
     implementation("dev.lightdream:message-builder:3.1.2")
 }
 ```
+
   </details>
   <details>
   <summary style="padding-left:50px">jitpack.io</summary>
@@ -124,8 +128,6 @@ dependencies {
     implementation("com.github.L1ghtDream:message-builder:3.1.2")
 }
 ```
-
-
 
 </details>
 

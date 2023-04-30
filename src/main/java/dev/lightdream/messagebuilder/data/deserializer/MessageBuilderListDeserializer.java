@@ -12,9 +12,9 @@ import java.util.List;
 public class MessageBuilderListDeserializer implements Deserializer<MessageBuilderList> {
 
     @Override
-    public MessageBuilderList deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext deserializationContext){
+    public MessageBuilderList deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext deserializationContext) {
 
-        JsonArray array =jsonElement.getAsJsonArray();
+        JsonArray array = jsonElement.getAsJsonArray();
         List<String> list = new ArrayList<>();
 
         for (JsonElement element : array) {

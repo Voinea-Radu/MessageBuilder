@@ -3,7 +3,7 @@ project = "3.1.2"
 
 [libraries]
 lombok = { module = "org.projectlombok:lombok", version = "1.18.26" }
-jetbrains_annotations =  { module = "org.jetbrains:annotations", version = "23.1.0" }
+jetbrains_annotations = { module = "org.jetbrains:annotations", version = "23.1.0" }
 
 lightdream_logger = { module = "dev.lightdream:logger", version = "3.2.8" }
-lightdream_filemanager = { module = "dev.lightdream:file-manager", version = "2.6.4" }
+lightdream_filemanager = { module = "dev.lightdream:file-manager", version = "2.6.5" }
