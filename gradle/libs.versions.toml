@@ -2,7 +2,7 @@
 project = "3.1.9"
 
 [libraries]
-lombok = { module = "org.projectlombok:lombok", version = "1.18.26" }
+lombok = { module = "org.projectlombok:lombok", version = "1.18.28" }
 jetbrains_annotations = { module = "org.jetbrains:annotations", version = "24.0.1" }
 
 junit_jupiter = { module = "org.junit.jupiter:junit-jupiter ", version="5.9.3" }
