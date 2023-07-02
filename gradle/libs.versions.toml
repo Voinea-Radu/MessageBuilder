@@ -8,5 +8,5 @@ jetbrains_annotations = { module = "org.jetbrains:annotations", version = "24.0.
 junit_jupiter = { module = "org.junit.jupiter:junit-jupiter ", version="5.9.3" }
 junit_bom = { module = "org.junit:junit-bom", version="5.9.3" }
 
-lightdream_logger = { module = "dev.lightdream:logger", version = "3.3.12" }
-lightdream_filemanager = { module = "dev.lightdream:file-manager", version = "2.7.6" }
+lightdream_logger = { module = "dev.lightdream:logger", version = "3.3.13" }
+lightdream_filemanager = { module = "dev.lightdream:file-manager", version = "2.7.7" }
