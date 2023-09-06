@@ -1,7 +1,7 @@
 # MessageBuilder
 
 ![Build](../../actions/workflows/build.yml/badge.svg)
-![Version](https://img.shields.io/badge/Version-3.1.21-red.svg)
+![Version](https://img.shields.io/badge/Version-3.1.22-red.svg)
 
 # Table Of Contents
 
@@ -40,12 +40,12 @@ com.github.L1ghtDream instead of dev.lightdream)
     <dependency>
         <groupId>dev.lightdream</groupId>
         <artifactId>message-builder</artifactId>
-        <version>3.1.21</version>
+        <version>3.1.22</version>
     </dependency>
     <dependency>
         <groupId>com.github.L1ghtDream</groupId>
         <artifactId>message-builder</artifactId>
-        <version>3.1.21</version>
+        <version>3.1.22</version>
     </dependency>
 </dependencies>
 ```
@@ -59,8 +59,8 @@ repositories {
 }
 
 dependencies {
-    implementation "dev.lightdream:message-builder:3.1.21"
-    implementation "com.github.L1ghtDream:message-builder:3.1.21"
+    implementation "dev.lightdream:message-builder:3.1.22"
+    implementation "com.github.L1ghtDream:message-builder:3.1.22"
 }
 ```
 
@@ -73,8 +73,8 @@ repositories {
 }
 
 dependencies {
-    implementation("dev.lightdream:message-builder:3.1.21")
-    implementation("com.github.L1ghtDream:message-builder:3.1.21")
+    implementation("dev.lightdream:message-builder:3.1.22")
+    implementation("com.github.L1ghtDream:message-builder:3.1.22")
 }
 ```
 
