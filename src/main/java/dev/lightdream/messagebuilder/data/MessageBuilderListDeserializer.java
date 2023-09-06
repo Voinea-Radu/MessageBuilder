@@ -1,15 +1,17 @@
-package dev.lightdream.messagebuilder.data.deserializer;
+package dev.lightdream.messagebuilder.data;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonSerializationContext;
+import dev.lightdream.filemanager.GsonSerializer;
 import dev.lightdream.messagebuilder.MessageBuilderList;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MessageBuilderListDeserializer implements Deserializer<MessageBuilderList> {
+public class MessageBuilderListDeserializer implements GsonSerializer<MessageBuilderList> {
 
     @Override
     public MessageBuilderList deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext deserializationContext) {
@@ -22,6 +24,18 @@ public class MessageBuilderListDeserializer implements Deserializer<MessageBuild
         }
 
         return new MessageBuilderList(list);
+    }
+
+
+    @Override
+    public JsonElement serialize(MessageBuilderList src, Type typeOfSrc, JsonSerializationContext context) {
+        JsonArray array = new JsonArray();
+
+        for (String line : src.getBase()) {
+            array.add(line);
+        }
+
+        return array;
     }
 
     @Override

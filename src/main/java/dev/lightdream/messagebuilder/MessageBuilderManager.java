@@ -1,9 +1,8 @@
 package dev.lightdream.messagebuilder;
 
-import dev.lightdream.messagebuilder.data.deserializer.MessageBuilderDeserializer;
-import dev.lightdream.messagebuilder.data.deserializer.MessageBuilderListDeserializer;
-import dev.lightdream.messagebuilder.data.serializer.MessageBuilderListSerializer;
-import dev.lightdream.messagebuilder.data.serializer.MessageBuilderSerializer;
+import dev.lightdream.filemanager.FileManager;
+import dev.lightdream.messagebuilder.data.MessageBuilderDeserializer;
+import dev.lightdream.messagebuilder.data.MessageBuilderListDeserializer;
 import lombok.Getter;
 
 @SuppressWarnings({"unused", "LombokGetterMayBeUsed"})
@@ -34,10 +33,10 @@ public class MessageBuilderManager {
     }
 
     public static void init() {
-        new MessageBuilderSerializer().register();
-        new MessageBuilderListSerializer().register();
-        new MessageBuilderDeserializer().register();
-        new MessageBuilderListDeserializer().register();
+        if (FileManager.get() != null) {
+            new MessageBuilderDeserializer().register(FileManager.get());
+            new MessageBuilderListDeserializer().register(FileManager.get());
+        }
 
         initialized = true;
     }
