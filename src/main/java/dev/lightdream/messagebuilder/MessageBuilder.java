@@ -1,7 +1,5 @@
 package dev.lightdream.messagebuilder;
 
-import dev.lightdream.filemanager.FileManager;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,10 +12,6 @@ public class MessageBuilder extends GenericMessageBuilder<String> {
 
     protected MessageBuilder(String base, List<Object> placeholders, List<Object> values) {
         super(base, placeholders, values);
-    }
-
-    public static void init(FileManager fileManager) {
-        MessageBuilderManager.init(fileManager);
     }
 
     public static void init() {
