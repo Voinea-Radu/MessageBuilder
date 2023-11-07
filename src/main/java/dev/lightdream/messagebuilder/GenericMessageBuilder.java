@@ -1,6 +1,6 @@
 package dev.lightdream.messagebuilder;
 
-import dev.lightdream.logger.Logger;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,6 +11,7 @@ import java.util.Objects;
 public abstract class GenericMessageBuilder<T> {
 
     private final boolean cloned = false;
+    @Getter
     protected T base;
     protected List<Object> placeholders = new ArrayList<>();
     protected List<Object> values = new ArrayList<>();
@@ -47,9 +48,6 @@ public abstract class GenericMessageBuilder<T> {
     }
 
     public T parse() {
-        if (!MessageBuilderManager.isInitialized()) {
-            Logger.warn("MessageBuilder manager has not been initialized!");
-        }
         T parsed = base;
 
         for (int i = 0; i < Math.min(placeholders.size(), values.size()); i++) {
@@ -77,7 +75,7 @@ public abstract class GenericMessageBuilder<T> {
             parsed = parsePlaceholder(parsed, "%" + placeholder + "%", value);
         }
 
-        if (MessageBuilderManager.isChatColor()) {
+        if (MessageBuilderManager.getSettings().chatColor()) {
             parsed = parsePlaceholder(parsed, "&", "§");
         }
 
@@ -97,10 +95,6 @@ public abstract class GenericMessageBuilder<T> {
     @Override
     public int hashCode() {
         return Objects.hash(cloned, getBase(), placeholders, values);
-    }
-
-    public T getBase() {
-        return this.base;
     }
 
     @SuppressWarnings("UnusedReturnValue")

@@ -14,8 +14,8 @@ public class MessageBuilder extends GenericMessageBuilder<String> {
         super(base, placeholders, values);
     }
 
-    public static void init() {
-        MessageBuilderManager.init();
+    public static void init(MessageBuilderManager.Settings settings) {
+        MessageBuilderManager.init(settings);
     }
 
     @Override

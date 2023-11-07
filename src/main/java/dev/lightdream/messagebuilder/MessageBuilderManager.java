@@ -1,52 +1,48 @@
 package dev.lightdream.messagebuilder;
 
-import dev.lightdream.filemanager.FileManager;
-import dev.lightdream.messagebuilder.data.MessageBuilderDeserializer;
-import dev.lightdream.messagebuilder.data.MessageBuilderListDeserializer;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.Accessors;
+import org.jetbrains.annotations.NotNull;
 
-@SuppressWarnings({"unused", "LombokGetterMayBeUsed"})
+@SuppressWarnings({"unused"})
+
 public class MessageBuilderManager {
 
-    private static @Getter String colorChar = "&";
-    private static @Getter String colorCharReplace = "§";
-    private static @Getter boolean initialized = false;
-    private static @Getter boolean chatColor = false;
+    private static @Getter Settings settings;
 
-    public static void setColorChar(String colorChar) {
-        MessageBuilderManager.colorChar = colorChar;
+    static {
+        init(new Settings());
     }
 
-    public static void setColorCharReplace(String colorCharReplace) {
-        MessageBuilderManager.colorCharReplace = colorCharReplace;
+    public static void init(Settings settings) {
+        MessageBuilderManager.settings = settings;
     }
 
-    public static void setupSpigot() {
-        setColorChar("&");
-        setColorCharReplace("§");
-    }
+    @Getter
+    @Setter
+    @Accessors(fluent = true)
+    @NoArgsConstructor
+    public static class Settings {
+        private @NotNull String colorChar = "&";
+        private @NotNull String colorCharReplace = "§";
+        private boolean chatColor = false;
 
-    public static void setupForge() {
-        setColorChar("&");
-        //noinspection UnnecessaryUnicodeEscape
-        setColorCharReplace("\u00a7");
-    }
-
-    public static void init() {
-        if (FileManager.get() != null) {
-            new MessageBuilderDeserializer().register(FileManager.get());
-            new MessageBuilderListDeserializer().register(FileManager.get());
+        public static Settings spigotPreset() {
+            return new Settings()
+                    .colorChar("&")
+                    .colorCharReplace("§")
+                    .chatColor(true);
         }
 
-        initialized = true;
-    }
-
-    public static void disableChatColor() {
-        chatColor = false;
-    }
-
-    public static void enableChatColor() {
-        chatColor = true;
+        public static Settings forgePreset() {
+            //noinspection UnnecessaryUnicodeEscape
+            return new Settings()
+                    .colorChar("&")
+                    .colorCharReplace("\u00a7")
+                    .chatColor(true);
+        }
     }
 
 }

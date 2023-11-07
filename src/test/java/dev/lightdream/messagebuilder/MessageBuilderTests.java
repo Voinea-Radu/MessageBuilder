@@ -1,6 +1,6 @@
 package dev.lightdream.messagebuilder;
 
-import org.junit.jupiter.api.BeforeAll;
+
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -10,11 +10,6 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MessageBuilderTests {
-
-    @BeforeAll
-    public static void init() {
-        MessageBuilder.init();
-    }
 
     @Test
     public void testMessageBuilder() {
