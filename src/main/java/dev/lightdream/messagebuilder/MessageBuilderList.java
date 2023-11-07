@@ -64,8 +64,4 @@ public class MessageBuilderList extends GenericMessageBuilder<List<String>> {
         return new MessageBuilderList(base, new ArrayList<>(placeholders), new ArrayList<>(values));
     }
 
-    public static void init(MessageBuilderManager.Settings settings) {
-        MessageBuilderManager.init(settings);
-    }
-
 }

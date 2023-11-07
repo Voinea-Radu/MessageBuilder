@@ -1,13 +1,13 @@
 [versions]
-project = "4.0.1"
+project = "4.1.-1"
 
 [libraries]
 lombok = { module = "org.projectlombok:lombok", version = "1.18.30" }
 jetbrains_annotations = { module = "org.jetbrains:annotations", version = "24.0.1" }
 
-junit_jupiter = { module = "org.junit.jupiter:junit-jupiter ", version="5.10.1" }
-junit_bom = { module = "org.junit:junit-bom", version="5.10.1" }
+junit_jupiter = { module = "org.junit.jupiter:junit-jupiter ", version = "5.10.1" }
+junit_bom = { module = "org.junit:junit-bom", version = "5.10.1" }
 
-lightdream_logger = { module = "dev.lightdream:logger", version = "4.0.6" }
-lightdream_lambda = { module = "dev.lightdream:lambda", version = "5.1.5" }
-lightdream_filemanager = { module = "dev.lightdream:file-manager", version = "3.0.2" }
+lightdream_logger = { module = "dev.lightdream:logger", version = "4.1.0" }
+lightdream_lambda = { module = "dev.lightdream:lambda", version = "5.2.0" }
+lightdream_filemanager = { module = "dev.lightdream:file-manager", version = "3.1.1" }

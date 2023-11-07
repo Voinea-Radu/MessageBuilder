@@ -14,10 +14,6 @@ public class MessageBuilder extends GenericMessageBuilder<String> {
         super(base, placeholders, values);
     }
 
-    public static void init(MessageBuilderManager.Settings settings) {
-        MessageBuilderManager.init(settings);
-    }
-
     @Override
     protected boolean equals(String o1, String o2) {
         if (o1 == null) {

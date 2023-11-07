@@ -75,7 +75,7 @@ public abstract class GenericMessageBuilder<T> {
             parsed = parsePlaceholder(parsed, "%" + placeholder + "%", value);
         }
 
-        if (MessageBuilderManager.getSettings().chatColor()) {
+        if (MessageBuilderManager.instance().chatColor()) {
             parsed = parsePlaceholder(parsed, "&", "§");
         }
 

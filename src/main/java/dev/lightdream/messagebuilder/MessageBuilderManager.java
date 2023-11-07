@@ -1,47 +1,44 @@
 package dev.lightdream.messagebuilder;
 
+import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-import org.jetbrains.annotations.NotNull;
 
-@SuppressWarnings({"unused"})
-
+@Builder(builderClassName = "_Builder", toBuilder = true)
+@Getter
+@Setter
+@Accessors(chain = true, fluent = true)
 public class MessageBuilderManager {
 
-    private static @Getter Settings settings;
+    private static @Getter MessageBuilderManager instance;
 
     static {
-        init(new Settings());
+        builder().build();
     }
 
-    public static void init(Settings settings) {
-        MessageBuilderManager.settings = settings;
+    @lombok.Builder.Default
+    private boolean chatColor = false;
+
+    public static Builder builder() {
+        return new Builder();
     }
 
-    @Getter
-    @Setter
-    @Accessors(fluent = true)
-    @NoArgsConstructor
-    public static class Settings {
-        private @NotNull String colorChar = "&";
-        private @NotNull String colorCharReplace = "§";
-        private boolean chatColor = false;
+    @SuppressWarnings("unused")
+    public static Builder minecraftBuilder() {
+        return (Builder) new Builder()
+                .chatColor(true);
+    }
 
-        public static Settings spigotPreset() {
-            return new Settings()
-                    .colorChar("&")
-                    .colorCharReplace("§")
-                    .chatColor(true);
-        }
+    public MessageBuilderManager init() {
+        instance = this;
+        return this;
+    }
 
-        public static Settings forgePreset() {
-            //noinspection UnnecessaryUnicodeEscape
-            return new Settings()
-                    .colorChar("&")
-                    .colorCharReplace("\u00a7")
-                    .chatColor(true);
+    public static class Builder extends _Builder {
+        @Override
+        public MessageBuilderManager build() {
+            return super.build().init();
         }
     }
 
