@@ -10,4 +10,4 @@ junit_bom = { module = "org.junit:junit-bom", version="5.10.1" }
 
 lightdream_logger = { module = "dev.lightdream:logger", version = "4.0.6" }
 lightdream_lambda = { module = "dev.lightdream:lambda", version = "5.1.5" }
-lightdream_filemanager = { module = "dev.lightdream:file-manager", version = "3.0.1" }
+lightdream_filemanager = { module = "dev.lightdream:file-manager", version = "3.0.2" }
