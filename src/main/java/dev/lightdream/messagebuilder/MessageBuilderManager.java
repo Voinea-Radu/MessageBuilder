@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
-@Builder(builderClassName = "_Builder", toBuilder = true)
+@Builder(builderClassName = "Builder", toBuilder = true)
 @Getter
 @Setter
 @Accessors(chain = true, fluent = true)
@@ -17,29 +17,21 @@ public class MessageBuilderManager {
         builder().build();
     }
 
-    @lombok.Builder.Default
-    private boolean chatColor = false;
+    private boolean chatColor;
+
+    public MessageBuilderManager(boolean chatColor) {
+        instance = this;
+        this.chatColor = chatColor;
+    }
 
     public static Builder builder() {
-        return new Builder();
+        return new Builder()
+                .chatColor(false);
     }
 
     @SuppressWarnings("unused")
     public static Builder minecraftBuilder() {
-        return (Builder) new Builder()
+        return new Builder()
                 .chatColor(true);
     }
-
-    public MessageBuilderManager init() {
-        instance = this;
-        return this;
-    }
-
-    public static class Builder extends _Builder {
-        @Override
-        public MessageBuilderManager build() {
-            return super.build().init();
-        }
-    }
-
 }
