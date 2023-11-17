@@ -19,6 +19,7 @@ java {
 dependencies {
     // LightDream
     api(libs.lightdream.logger)
+    api(libs.lightdream.lambda)
     api(libs.lightdream.filemanager)
 
     // Lombok
