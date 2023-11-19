@@ -1,5 +1,8 @@
 package dev.lightdream.messagebuilder;
 
+import dev.lightdream.filemanager.FileManager;
+import dev.lightdream.messagebuilder.data.MessageBuilderDeserializer;
+import dev.lightdream.messagebuilder.data.MessageBuilderListDeserializer;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,6 +25,8 @@ public class MessageBuilderManager {
     public MessageBuilderManager(boolean chatColor) {
         instance = this;
         this.chatColor = chatColor;
+        new MessageBuilderDeserializer().register(FileManager.instance().gsonSettings());
+        new MessageBuilderListDeserializer().register(FileManager.instance().gsonSettings());
     }
 
     public static Builder builder() {
