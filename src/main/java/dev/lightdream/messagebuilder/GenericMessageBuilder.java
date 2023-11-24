@@ -73,6 +73,7 @@ public abstract class GenericMessageBuilder<T> {
             }
 
             parsed = parsePlaceholder(parsed, "%" + placeholder + "%", value);
+            parsed = parsePlaceholder(parsed, "{" + placeholder + "}", value);
         }
 
         if (MessageBuilderManager.instance().chatColor()) {
